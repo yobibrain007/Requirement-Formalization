@@ -1,0 +1,57 @@
+ATM is initialized with t dollar .
+%%%
+If no cash card is entered, the ATM should display the initial display .
+%%%
+After a card is entered, If the amount of cash is less than t, display an error message and return cash card .
+%%%
+After a card is entered, ATM has to check the cash-card validation . The cash-card will be valid if the information on the card can be read and it is not expired . Display error message and return cash card if it is Invalid .
+%%%
+If the cash-card is valid, the ATM should read the serial number and bank code .
+%%%
+When the serial number is read, store it in the log-file .
+%%%
+After the user password is entered, the user password and the bank code are sent to the bank computer . 
+%%%
+ATM receive [bad_password] from the bank computer, if the user password is wrong .
+%%%
+ATM receive [bad_bank_code] from the bank computer, if the the bank code is not supported by the ATM .
+%%%
+ATM receive [bad_account] from the bank computer, if the account has problem .
+%%%
+When the ATM receives [bad_password], [bad_bank_code], or [bad_account] from the bank computer, it shall be displayed and the card will be rejected .
+%%%
+When the ATM receive [Accepted] from the bank-computer, the transaction dialog shall be started .
+%%%
+If the succession wrong password exceeds 3, ATM displays [The_customer_should_call_the_bank] .
+%%%
+After the amount to withdraw is entered, if it is greater than m, the transaction dialog shall be restarted .
+%%%
+After the amount to withdraw is entered, if it is less than or equals m, send the amount to withdraw to the bank computer .
+%%%
+
+When the ATM receives [transaction_succeeded] from the bank computer, ATM prints receipt, t shall be decreased by the amount to withdraw, the cash card shall be rejected, and the amount to withdraw is dispensed .
+%%%
+When the amount to withdraw is dispensed, dispensing request is sent to the computer bank .
+%%%
+When the ATM receives [transaction_not_successful] from the bank computer, the ATM shall display error message and the cash card shall be rejected .
+%%%
+
+When the bank computer receives the bank code, if the bank code is issued by the bank, the bank code shall be valid . if the bank code is not issued by the bank, the bank code shall be invalid .
+%%%
+If the bank code is invalid, the bank computer shall be sent [bad_bank_code] to the ATM .
+%%%
+When the bank computer receive the user password, if the user password does not equal the stored user password,  the user password shall be invalid and the bank computer send [bad_password] to the ATM .
+%%%
+If the bank code is valid, the user password is valid and the account has problem, the bank computer sends [bad_account] to the ATM .
+%%%
+If the bank code is valid, the user password is valid and the account does not have problem, the bank computer sends [account_ok] to the ATM .
+%%%
+When the bank computer receives the amount to withdraw, if it is greater than k, the bank computer shall send [transaction_not_successful] to the ATM . 
+%%%
+If the amount to withdraw is less than or equals k, the computer shall update the money of the account, shall update k ,and shall send [transaction_succeeded] to the ATM .
+%%%
+When the bank computer receives dispensing request, the account shall be updated .
+The error message should be displayed for at least 30 seconds .
+%%%
+After a request if the bank computer does not response within 2 minutes, the cash card shall be rejected and the ATM shall display error message .
+%%%
